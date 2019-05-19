@@ -13,7 +13,6 @@ services:
         - PEER2=discovery-server-2
         - PEER3=discovery-server-3
         - APPNAME=discovery-server-1
-        - NAME=discovery_server
         - CONFIG_SERVER=config_server
   discovery-server-2:
     image: dheerajdac/discovery_server:qa01
@@ -27,7 +26,6 @@ services:
         - PEER1=discovery-server-1
         - PEER2=discovery-server-2
         - PEER3=discovery-server-3
-        - NAME=discovery_server
         - APPNAME=discovery-server-2
   discovery-server-3:
     image: dheerajdac/discovery_server:qa01
@@ -41,7 +39,6 @@ services:
         - PEER1=discovery-server-1
         - PEER2=discovery-server-2
         - PEER3=discovery-server-3
-        - NAME=discovery_server
         - APPNAME=discovery-server-3
   config-server-1:
     image: dheerajdac/config_server:qa01
