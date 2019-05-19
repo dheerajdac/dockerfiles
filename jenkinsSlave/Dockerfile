@@ -5,7 +5,7 @@ RUN apt-get update -qq && apt-get install -qqy \
     curl \
     lxc \
     iptables \
-    software-properties-common \
+    software-properties-common
 
 RUN apt-get install -qqy docker-ce-cli maven openjdk-8-jdk
 
