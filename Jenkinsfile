@@ -10,8 +10,6 @@ pipeline {
         stages {
             stage('Building Image') {
                 steps{
-                    sh 'pwd'
-                    sh 'mvn'
                     script {
                         dockerImage = docker.build("ubuntu", "./jenkinsSlave") registry + ":$BUILD_NUMBER"
                     }
