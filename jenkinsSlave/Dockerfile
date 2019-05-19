@@ -9,3 +9,12 @@ RUN apt-get update -qq && apt-get install -qqy \
 
 RUN apt-get install -qqy openjdk-8-jdk maven
 
+# Install Docker from Docker Inc. repositories.
+RUN curl -sSL https://get.docker.com/ | sh
+
+# Install the magic wrapper.
+ADD ./wrapdocker /usr/local/bin/wrapdocker
+RUN chmod +x /usr/local/bin/wrapdocker
+
+# Define additional metadata for our image.
+CMD ["wrapdocker"]
