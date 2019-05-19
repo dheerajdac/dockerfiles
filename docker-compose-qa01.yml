@@ -1,0 +1,76 @@
+version: "3"
+services:
+  discovery-server-1:
+    image: dheerajdac/discovery_server:qa01
+    ports:
+      - "8761:8761"
+    networks:
+        - webnet
+    environment:
+        - PORT=8761
+        - PEER_PORT=8762
+        - PEER1=discovery-server-1
+        - PEER2=discovery-server-2
+        - PEER3=discovery-server-3
+        - APPNAME=discovery-server-1
+        - NAME=discovery_server
+        - CONFIG_SERVER=config_server
+  discovery-server-2:
+    image: dheerajdac/discovery_server:qa01
+    networks:
+        - webnet
+    ports:
+      - "8762:8762"
+    environment:
+        - PORT=8762
+        - PEER_PORT=8761
+        - PEER1=discovery-server-1
+        - PEER2=discovery-server-2
+        - PEER3=discovery-server-3
+        - NAME=discovery_server
+        - APPNAME=discovery-server-2
+  discovery-server-3:
+    image: dheerajdac/discovery_server:qa01
+    networks:
+        - webnet
+    ports:
+      - "8763:8763"
+    environment:
+        - PORT=8763
+        - PEER_PORT=8761
+        - PEER1=discovery-server-1
+        - PEER2=discovery-server-2
+        - PEER3=discovery-server-3
+        - NAME=discovery_server
+        - APPNAME=discovery-server-3
+  config-server-1:
+    image: dheerajdac/config_server:qa01
+    networks:
+      - webnet
+    ports:
+      - "8888:8888"
+    environment:
+      - PORT=8888
+      - PEER1=discovery-server-1
+      - PEER2=discovery-server-2
+      - PEER3=discovery-server-3
+  config-server-2:
+    image: dheerajdac/config_server:qa01
+    networks:
+      - webnet
+    ports:
+      - "8889:8889"
+    environment:
+      - PORT=8889
+      - PEER1=discovery-server-1
+      - PEER2=discovery-server-2
+      - PEER3=discovery-server-3
+
+volumes:
+  esdata1:
+    driver: local
+  esdata2:
+    driver: local
+
+networks:
+  webnet:
