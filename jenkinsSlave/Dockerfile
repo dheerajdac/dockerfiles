@@ -7,5 +7,5 @@ RUN apt-get update -qq && apt-get install -qqy \
     iptables \
     software-properties-common
 
-RUN apt-get install -qqy docker-ce-cli maven openjdk-8-jdk
+RUN apt-get install -qqy maven openjdk-8-jdk
 
