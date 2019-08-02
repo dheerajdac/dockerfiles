@@ -15,7 +15,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
   discovery-server-1:
-    image: openjdk
+    image: dheerajdac/discovery_server
     ports:
       - "8761:8761"
     networks:
