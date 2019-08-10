@@ -15,7 +15,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
   discovery-server-1:
-    image: dheerajdac/discovery_server
+    image: dheerajdac/discovery_server:qa01
     ports:
       - "8761:8761"
     networks:
@@ -30,7 +30,7 @@ services:
         - NAME=discovery_server
         - CONFIG_SERVER=config_server
   discovery-server-2:
-    image: dheerajdac/discovery_server
+    image: dheerajdac/discovery_server:qa01
     networks:
         - webnet
     ports:
@@ -44,7 +44,7 @@ services:
         - NAME=discovery_server
         - APPNAME=discovery-server-2
   discovery-server-3:
-    image: dheerajdac/discovery_server
+    image: dheerajdac/discovery_server:qa01
     networks:
         - webnet
     ports:
@@ -58,7 +58,7 @@ services:
         - NAME=discovery_server
         - APPNAME=discovery-server-3
   config-server-1:
-    image: config
+    image: dheerajdac/config_server:qa01
     networks:
       - webnet
     ports:
@@ -69,7 +69,7 @@ services:
       - PEER2=discovery-server-2
       - PEER3=discovery-server-3
   config-server-2:
-    image: config
+    image: dheerajdac/config_server:qa01
     networks:
       - webnet
     ports:
