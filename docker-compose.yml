@@ -125,7 +125,7 @@ services:
     networks:
       - webnet
   logstash:
-    image: logstash
+    image: docker.elastic.co/logstash/logstash:6.6.1
     ports:
       - "5044:5044"
       - "9600:9600"
