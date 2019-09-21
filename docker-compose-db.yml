@@ -1,0 +1,21 @@
+version: "3"
+services:
+  db:
+    image: "postgres:11"
+    container_name: "my_postgres"
+    ports:
+    - "54320:5432"
+    volumes:
+    - my_dbdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: dheeraj
+      POSTGRES_PASSWORD: dheeraj
+      POSTGRES_DB: my_db
+  adminer:
+    image: adminer
+    ports:
+    - 7777:8080
+volumes:
+  my_dbdata:
+networks:
+  webnet:
