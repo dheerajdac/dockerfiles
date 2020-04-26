@@ -4,18 +4,35 @@ services:
     image: "postgres:11"
     container_name: "my_postgres"
     ports:
-    - "54320:5432"
+    - "54320:54320"
     volumes:
-    - my_dbdata:/var/lib/postgresql/data
+    - "$PWD/postgres_data:/var/lib/postgresql/data"
     environment:
       POSTGRES_USER: dheeraj
       POSTGRES_PASSWORD: dheeraj
       POSTGRES_DB: my_db
+    networks:
+      - postgres
   adminer:
     image: adminer
     ports:
-    - 7777:8080
+      - 7777:8080
+    networks:
+      - postgres
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+    volumes:
+       - "$PWD/pgadmin:/root/.pgadmin"
+    ports:
+      - "7778:80"
+    networks:
+      - postgres
 volumes:
-  my_dbdata:
+  db:
+    driver: local
 networks:
-  webnet:
+  postgres:

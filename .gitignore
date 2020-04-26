@@ -3,6 +3,11 @@ HELP.md
 !.mvn/wrapper/maven-wrapper.jar
 /.mvn/
 /idea/
+/jenkins/
+/kafka_data/
+/mongodb_data/
+/pgadmin/
+/postgres_data/
 
 ### STS ###
 .apt_generated
