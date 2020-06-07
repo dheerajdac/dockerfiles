@@ -26,23 +26,23 @@ services:
     networks:
       - notes
   
-  notes_controller:
+  notes-controller:
     image: dheerajdac/notes_controller:qa01
     ports:
       - "9090:9090"
     networks:
         - notes
     environment:
-        - NOTES_SERVICE=notes_controller
+        - NOTES_SERVICE=notes-service
 
-  notes_service:
+  notes-service:
     image: dheerajdac/notes_service:qa01
     networks:
       - notes
     environment:
-      - NOTES_REPOSITORY=notes_repository
+      - NOTES_REPOSITORY=notes-repository
 
-  notes_repository:
+  notes-repository:
     image: dheerajdac/notes_repository:qa01
     networks:
       - notes
