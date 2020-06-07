@@ -1,0 +1,12 @@
+version: "3.5"
+services:
+  redis:
+    image: redis
+    networks:
+      - redis
+    ports:
+      - "6379:6379"
+      
+networks:
+  redis:
+    name: redis

@@ -1,4 +1,4 @@
-version: "3"
+version: "3.5"
 services:
   mongodb_container:
     image: mongo:latest
@@ -31,3 +31,4 @@ volumes:
     driver: local
 networks:
   mongodb:
+    name: mongodb-networks

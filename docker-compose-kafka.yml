@@ -1,9 +1,5 @@
-version: "3"
+version: "3.5"
 services:
-  zookeeper:
-    image: wurstmeister/zookeeper
-    ports:
-      - "2181:2181"
   kafka:
     image: wurstmeister/kafka
     ports:
@@ -18,11 +14,16 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - "$PWD/kafka_data:/var/lib/kafka/data"
-    depends_on: 
+    networks: 
       - zookeeper
+      - kafka
 volumes:
   kafka:
     driver: local
 
 networks:
   kafka:
+    name: kafka-networks
+  zookeeper :
+    external: 
+      name: zookeeper
