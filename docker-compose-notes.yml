@@ -5,23 +5,32 @@ services:
     ports:
       - "9090:9090"
     networks:
-        - notes
+      - notes
     environment:
-        - NOTES_SERVICE=notes-service
+      - PROFILE=production
+      - NOTES_SERVICE=notes-service
 
   notes-service:
     image: dheerajdac/notes_service:qa01
+    ports:
+      - "9001:9001"
     networks:
       - notes
+      - redis
     environment:
+      - PROFILE=production
+      - REDIS=redis
       - NOTES_REPOSITORY=notes-repository
 
   notes-repository:
     image: dheerajdac/notes_repository:qa01
+    ports: 
+      - "9002:9002" 
     networks:
       - notes
       - db-networks
     environment:
+      - PROFILE=production
       - MONGODB_HOST=mongodb_container
       - MONGODB_PORT=27017
       - MONGODB_USERNAME=root
@@ -35,4 +44,7 @@ networks:
   db-networks : 
     external: 
       name: mongodb-networks
+  redis : 
+    external: 
+      name: redis
   notes:

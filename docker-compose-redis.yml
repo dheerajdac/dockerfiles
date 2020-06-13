@@ -2,6 +2,7 @@ version: "3.5"
 services:
   redis:
     image: redis
+    container_name: redis
     networks:
       - redis
     ports:
