@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:20.04
 RUN apt-get update -qq && apt-get install -qqy \
     apt-transport-https \
     ca-certificates \
@@ -7,7 +7,7 @@ RUN apt-get update -qq && apt-get install -qqy \
     iptables \
     software-properties-common
 
-RUN apt-get install -qqy openjdk-8-jdk maven
+RUN apt-get install -qqy openjdk-14-jdk maven
 
 # Install Docker from Docker Inc. repositories.
 RUN curl -sSL https://get.docker.com/ | sh

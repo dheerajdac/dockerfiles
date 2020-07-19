@@ -2,6 +2,7 @@ version: "3.5"
 services:
   notes-controller:
     image: dheerajdac/notes_controller:qa01
+    container_name: notes-controller
     ports:
       - "9090:9090"
     networks:
@@ -12,6 +13,7 @@ services:
 
   notes-service:
     image: dheerajdac/notes_service:qa01
+    container_name: notes-service
     ports:
       - "9001:9001"
     networks:
@@ -24,6 +26,7 @@ services:
 
   notes-repository:
     image: dheerajdac/notes_repository:qa01
+    container_name: notes-repository
     ports: 
       - "9002:9002" 
     networks:
@@ -37,9 +40,6 @@ services:
       - MONGODB_PASSWORD=example
       - MONGODB_NAME=admin
 
-volumes:
-  mongodb_container:
-    driver: local
 networks:
   db-networks : 
     external: 
