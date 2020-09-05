@@ -2,6 +2,7 @@ version: "3.5"
 services:
   kafka:
     image: wurstmeister/kafka
+    container_name: kafka
     ports:
       - "9092:9092"
     environment:
@@ -23,7 +24,7 @@ volumes:
 
 networks:
   kafka:
-    name: kafka-networks
+    name: kafka
   zookeeper :
     external: 
       name: zookeeper
