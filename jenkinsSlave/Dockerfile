@@ -12,6 +12,8 @@ RUN apt-get install -qqy openjdk-14-jdk maven
 # Install Docker from Docker Inc. repositories.
 RUN curl -sSL https://get.docker.com/ | sh
 
+RUN mkdir /root/.m2 && mkdir /root/.m2/repository
+
 # Install the magic wrapper.
 ADD ./wrapdocker /usr/local/bin/wrapdocker
 RUN chmod +x /usr/local/bin/wrapdocker

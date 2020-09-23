@@ -3,8 +3,6 @@ services:
   db:
     image: "postgres:11"
     container_name: "postgres"
-    ports:
-    - "54320:54320"
     volumes:
     - "$PWD/postgres_data:/var/lib/postgresql/data"
     environment:
@@ -28,7 +26,7 @@ services:
     volumes:
        - "$PWD/pgadmin:/root/.pgadmin"
     ports:
-      - "7778:80"
+      - "9093:80"
     networks:
       - postgres
 volumes:
