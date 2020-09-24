@@ -1,0 +1,47 @@
+version: '3.5'
+
+services:
+  track_controller:
+    image: dheerajdac/track_controller:qa01
+    container_name: track_controller
+    ports:
+      - "9010:9010"
+    networks:
+      - track
+    environment:
+      - PROFILE=production
+      - TRACK_SERVICE=track_service
+
+  track_service:
+    image: dheerajdac/track_service:qa01
+    container_name: track_service
+    networks:
+      - track
+      - redis
+    environment:
+      - PROFILE=production
+      - REDIS=redis
+      - TRACK_REPOSITORY=track-repository
+
+  track_repository:
+    image: dheerajdac/track_repository:qa01
+    container_name: track_repository 
+    networks:
+      - track
+      - db-networks
+    environment:
+      - PROFILE=production
+      - MONGODB_HOST=mongodb_container
+      - MONGODB_PORT=27017
+      - MONGODB_USERNAME=root
+      - MONGODB_PASSWORD=example
+      - MONGODB_NAME=admin
+networks:
+  track:
+    name: track
+  redis:
+    external: 
+      name: redis
+  db-networks:
+    external: 
+      name: mongodb-networks

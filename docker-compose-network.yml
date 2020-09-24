@@ -1,0 +1,19 @@
+version: "3.5"
+
+networks:
+  mongodb:
+    name: mongodb-networks
+  kafka:
+    name: kafka
+  log-networks:
+    name: log-networks
+  postgres:
+    name: postgres-networks
+  redis:
+    name: redis
+  zookeeper:
+    name: zookeeper
+  track:
+    name: track
+  notes:
+    name: notes
