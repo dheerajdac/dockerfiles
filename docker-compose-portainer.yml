@@ -1,0 +1,23 @@
+version: "3"
+services:
+  jenkins:
+    image: jenkinsci/blueocean
+    container_name: jenkins
+    ports:
+      - "9090:8080"
+      - "50000:50000"
+    networks:
+    - webnet
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "$PWD/jenkins:/var/jenkins_home"
+    privileged: true
+    user: root
+    
+  portainer : 
+    image : portainer/portainer
+    container_name: portainer
+    ports : 
+      - "9091:9000"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"

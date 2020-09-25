@@ -13,18 +13,7 @@ services:
       - "$PWD/jenkins:/var/jenkins_home"
     privileged: true
     user: root
-    
-  portainer : 
-    image : portainer/portainer
-    container_name: portainer
-    ports : 
-      - "9091:9000"
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
 
 volumes:
   jenkins:
     driver: local
-
-networks:
-  webnet:
