@@ -14,5 +14,5 @@ RUN apt-get install -qqy nocache \
 
 RUN mkdir /root/.m2 && mkdir /root/.m2/repository && mkdir /root/.ssh
 
-
+COPY config /root/
 
