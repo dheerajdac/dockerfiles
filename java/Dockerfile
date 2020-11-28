@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk14:alpine
+FROM adoptopenjdk/openjdk11:alpine
 RUN mkdir /root/.m2 && mkdir /root/.m2/repository && mkdir /root/.ssh
 RUN apk add --no-cache \
 		git \

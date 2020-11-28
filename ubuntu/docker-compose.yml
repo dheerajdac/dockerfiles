@@ -1,0 +1,11 @@
+version: "3.5"
+services:
+    ubuntu11:
+        build: .
+        container_name: ubuntu11
+        command: sleep 600
+        volumes:
+            - "~/.m2/:/root/.m2"
+            - type: bind
+              source: ./
+              target: /workspace
