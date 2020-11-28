@@ -10,9 +10,11 @@ RUN apt-get install -qqy nocache \
     neovim \
     git \
     openjdk-11-jdk \
-    maven
+    maven \
+    zsh
 
 RUN mkdir /root/.m2 && mkdir /root/.m2/repository && mkdir /root/.ssh
 
-COPY config /root/
+RUN sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+COPY config /root/
