@@ -1,0 +1,12 @@
+version: "3.5"
+services: 
+  cass1:
+    image: cassandra:3.11.10
+    container_name: cass1
+    networks: 
+      - cassandra
+
+networks: 
+  cassandra:
+    name: cassandra
+  

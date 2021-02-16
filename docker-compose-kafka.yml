@@ -4,12 +4,13 @@ services:
     image: wurstmeister/kafka
     container_name: kafka
     environment:
-      KAFKA_ADVERTISED_HOST_NAME: 127.0.0.1
       KAFKA_CREATE_TOPICS: "devglan-test:1:1"
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_BROKER_ID: 1
       KAFKA_LOG4J_LOGGERS: "kafka.controller=INFO,kafka.producer.async.DefaultEventHandler=INFO,state.change.logger=INFO"
+      KAFKA_ADVERTISED_HOST_NAME: "kafka"
+      KAFKA_ADVERTISED_PORT: 9092
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - "$PWD/kafka_data:/var/lib/kafka/data"
