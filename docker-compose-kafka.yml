@@ -25,5 +25,4 @@ networks:
   kafka:
     name: kafka
   zookeeper :
-    external: 
-      name: zookeeper
+    name: zookeeper
