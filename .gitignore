@@ -35,3 +35,4 @@ HELP.md
 .devcontainer/.ssh/id_rsa.pub
 .devcontainer/.ssh/known_hosts
 .DS_Store
+/data/
