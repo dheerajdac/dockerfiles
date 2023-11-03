@@ -1,11 +1,29 @@
-version: "3.5"
+version: "3.9"
 services:
-    ubuntu11:
-        build: .
-        container_name: ubuntu11
-        command: sleep 600
+    ubuntu:
+        image: dheerajdac/ubuntu:java-17
+        container_name: ubuntu
+        command: sleep infinity
         volumes:
-            - "~/.m2/:/root/.m2"
+            - "/var/run/docker.sock:/var/run/docker.sock"
+            - "./data:/home/ubuntu"
+            - "./m2:/home/ubuntu/.m2"
             - type: bind
               source: ./
               target: /workspace
+        networks:
+          - cassandra
+          - kafka
+          - zookeeper
+          - redis
+
+
+networks:
+  cassandra:
+    name: cassandra
+  kafka:
+    name: kafka
+  zookeeper:
+    name: zookeeper
+  redis:
+    name: redis
